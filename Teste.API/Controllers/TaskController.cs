@@ -1,16 +1,10 @@
-using System.Net.Http.Headers;
-using System.IO;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Teste.API.DTOs;
-using Teste.Domain;
 using Teste.Repository;
-using System.Linq;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Teste.API.Controllers
 {

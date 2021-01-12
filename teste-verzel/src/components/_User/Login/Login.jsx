@@ -1,6 +1,6 @@
 import React, {useState } from 'react';
 import {Link} from 'react-router-dom';
-// import api from '../../../_api/baseApi';
+import api from '../../../_api/baseApi.jsx';
 
 import './Login.css'
 
@@ -9,15 +9,21 @@ function Login(){
     const [password, setPassword] = useState('');
     const [user, setUser] = useState('');
 
-    const login = () => {
+    async function login(){
         const userDto = { userName: user, password: password };
-        // const result = api.post('/task', userDto);
-        // console.log(result);
+        console.log(userDto);
+        api.post('user/login', userDto ).then(( response ) => {
+            const result = response;
+            if(result){
+                localStorage.setItem('token', data.token);
+                
+            }
+        });
     }
 
     return (
         <div>
-            <form onSubmit={() => console.log(user, password)} className="form-signin">
+            <form className="form-signin">
                 <h3>Login</h3>
                 <label>Usuário</label>
                 <input onChange={(e) => setUser(e.target.value)} className="form-control"/>

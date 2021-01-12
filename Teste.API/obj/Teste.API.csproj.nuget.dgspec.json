@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\repos\\Projects Professionals\\TesteVerzel\\Teste.APi\\Teste.API.csproj": {}
+    "C:\\repos\\Projects Professionals\\TesteVerzel\\teste.api\\Teste.API.csproj": {}
   },
   "projects": {
-    "C:\\repos\\Projects Professionals\\TesteVerzel\\Teste.APi\\Teste.API.csproj": {
+    "C:\\repos\\Projects Professionals\\TesteVerzel\\teste.api\\Teste.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\repos\\Projects Professionals\\TesteVerzel\\Teste.APi\\Teste.API.csproj",
+        "projectUniqueName": "C:\\repos\\Projects Professionals\\TesteVerzel\\teste.api\\Teste.API.csproj",
         "projectName": "Teste.API",
-        "projectPath": "C:\\repos\\Projects Professionals\\TesteVerzel\\Teste.APi\\Teste.API.csproj",
+        "projectPath": "C:\\repos\\Projects Professionals\\TesteVerzel\\teste.api\\Teste.API.csproj",
         "packagesPath": "C:\\Users\\phsma\\.nuget\\packages\\",
-        "outputPath": "C:\\repos\\Projects Professionals\\TesteVerzel\\Teste.APi\\obj\\",
+        "outputPath": "C:\\repos\\Projects Professionals\\TesteVerzel\\teste.api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

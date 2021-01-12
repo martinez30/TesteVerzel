@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YaQ3Q0F4lBSIgb3UWyufczbeO2jH1xIow9J0yFC6lJycgtTxmDwkJI51xGp3dE1HfcrBIK51AKMvVXCoto4kHA==",
+  "dgSpecHash": "rLRb69SAlv5/l2wtlogCrsftJ1Zjra6z8y61kU6OnqSJuc42L+bslNC8pJHvP6nnnCgk5lIejaLtFrapjcLOPQ==",
   "success": true,
-  "projectFilePath": "C:\\repos\\Projects Professionals\\TesteVerzel\\Teste.APi\\Teste.API.csproj",
+  "projectFilePath": "C:\\repos\\Projects Professionals\\TesteVerzel\\teste.api\\Teste.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\phsma\\.nuget\\packages\\automapper\\7.0.0\\automapper.7.0.0.nupkg.sha512",
     "C:\\Users\\phsma\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\4.0.0\\automapper.extensions.microsoft.dependencyinjection.4.0.0.nupkg.sha512",
