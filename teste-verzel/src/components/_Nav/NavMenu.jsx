@@ -1,36 +1,45 @@
-import React, { Component } from 'react';
-import { Container, Navbar, NavbarBrand, NavbarToggler, } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Container, Navbar, NavbarBrand} from 'reactstrap';
+import { Link , useHistory } from 'react-router-dom';
+import { Dropdown } from 'react-bootstrap';
 import './NavMenu.css';
 
-export class NavMenu extends Component {
-  static displayName = NavMenu.name;
+import {logout, getUserName, isLogged} from '../.././auth/auth.guard'
 
-  constructor (props) {
-    super(props);
+function NavMenu(){
+  
+  const history = new useHistory();
 
-    this.toggleNavbar = this.toggleNavbar.bind(this);
-    this.state = {
-      collapsed: true
-    };
+  function loggout(){
+    logout();
+    history.push('/login'); 
   }
+  
 
-  toggleNavbar () {
-    this.setState({
-      collapsed: !this.state.collapsed
-    });
-  }
-
-  render () {
     return (
       <header>
         <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
           <Container>
             <NavbarBrand tag={Link} to="/" ><h2>Teste Verzel</h2></NavbarBrand>
-            <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+            {
+            isLogged ? (
+              <Navbar>
+                  <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                      {getUserName()}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={loggout}>Sair</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+              </Navbar>
+                ) 
+              : null
+            }
           </Container>
         </Navbar>
       </header>
-    );
-  }
+    )
 }
+
+export default NavMenu

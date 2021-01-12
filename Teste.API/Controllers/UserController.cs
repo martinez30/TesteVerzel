@@ -86,7 +86,7 @@ namespace Teste.API.Controllers
             }
             catch(Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Banco Dados Falhou {ex.Message}");
+                return BadRequest($"Banco de dados Falhou {ex.Message}");
             }
         }
 
