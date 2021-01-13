@@ -1,3 +1,5 @@
+using System;
+
 namespace Teste.API.DTOs
 {
     public class TaskDto

@@ -1,23 +1,45 @@
-import React , { useState, Component} from 'react'
+import React , { useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import { Table } from 'react-bootstrap' 
-import ModalDelete from './ModalDelete/ModalDelete' 
 import './Home.css'
+import Task from './Task'
+import ModalDelete from './ModalDelete/ModalDelete' 
 
 import api from '../../_api/baseApi'
 
-function Home(){
+const Home = () => {
 
   let [tasks, setTasks] = useState([]);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [confirm, setConfirm] = useState(false);
+  let [taskId, setTaskId] = useState(0);
 
-  return (
+    useEffect(() => {
       api.get('task/').then((response) => {
-        tasks = response.data;
-      }),
+        setTasks(response.data);
+      })
+  }, []);
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  
+  const deleteTask = id => {
+    setTaskId(id);
+    setIsModalVisible(true);
+  }
+
+  const removeTask = id => {
+    setIsModalVisible(false);
+    if(id){
+      api.delete('task/' + id).then((response) => {
+        setTasks(tasks.filter(x => x.id !== id))
+      });
+    }
+  }
+
+    return (
       <>
       <h4>Projeto elaborado com FrontEnd em <a href="https://pt-br.reactjs.org/" target="_blank" rel="noopener noreferrer">ReactJs</a> com BackEnd em <a href="https://docs.microsoft.com/pt-br/dotnet/" target="_blank" rel="noopener noreferrer">ASP .NET CORE em C# 3.1</a>, WebAPI e Banco <a href="https://www.sqlite.org/index.html" target="_blank" rel="noopener noreferrer">Sqlite</a></h4>
+      <Link to="/task" className="btn btn-success create">
+        <span className="material-icons" title="Novo">add</span>
+      </Link>
       <Table className="mt-5" striped bordered hover size="sm">
       <thead>
         <tr>
@@ -29,33 +51,14 @@ function Home(){
         </tr>
       </thead>
       <tbody>
-      {
-        tasks.length > 0 ? (
-        tasks.map(task => (
-          <tr>
-              <td>{task.id}</td>
-          <td colSpan="2">{task.description}</td>
-          <td>{task.initialDate}</td>
-          <td>{task.finishDate}</td>
-          <td>
-          <Link to="/editar" className="btn btn-warning icon">
-            <span className="material-icons" title="Editar">create</span>
-          </Link>
-          <button className="btn btn-danger icon" onClick={() => setIsModalVisible(true)}>
-            <span className="material-icons" title="Deletar">delete</span>
-          </button>
-          {
-            isModalVisible ? (
-              <ModalDelete confirm={() => setConfirm(true)} onClose={() => setIsModalVisible(false)} showModal={isModalVisible}/>
-              ) : null
-            }
-          </td>
-        </tr>
-))
-    ) : (
-      <tr><td colSpan="6">Nenhum resultado encontrado</td></tr>
-      )
-  }
+        {
+          tasks.length > 0 ? (
+            <Task tasks={tasks} onClick={(e) => deleteTask(e)} />
+          ) : (
+            <tr><td colSpan="6">Nenhum registro encontrado</td></tr>
+          )
+        }
+        <ModalDelete idTask={taskId} onClose={(e) => removeTask(e)} showModal={isModalVisible}/>
       </tbody>
     </Table>  
     </>

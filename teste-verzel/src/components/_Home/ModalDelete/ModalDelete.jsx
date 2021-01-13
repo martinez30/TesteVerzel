@@ -1,17 +1,16 @@
 import React from 'react'
 import {Modal, Button} from 'react-bootstrap'
 
-  const ModalDelete = ({confirm = () => {}, onClose = () => {} , showModal = false }) => {
+  const ModalDelete = ({onClick = () => {}, onClose = () => {} , showModal = false, idTask = 0 }) => {
 
     const handleClose = () => { 
       onClose();
     }
 
     const handleConfirm = () => {
-      onClose();
-      confirm();
+      onClick();
+      onClose(idTask);
     }
-
 
       return (
           <Modal show={showModal}>

@@ -16,19 +16,24 @@ function Register(){
     const [user, setUser] = useState('');
     const [email, setEmail] = useState('');
     
-    const register = () => {
-        const userDto = { userName: user, password: password, email: email}
-        api.post('user/register', userDto).then((response) => {
-            if(response){
-                api.post('user/login', userDto).then((response) => {
-                    login(response.data.token);
-                    history.push('/home');
-                    const tokenDecoded = jwt_decoded(response.data.token);
-                    sessionStorage.setItem('userName', tokenDecoded.unique_name);
-                })
-            }
-        })
-    }
+    const register = (props) => {
+        if(user !== '' && email !== '' && password !== ''){
+            const userDto = { userName: user, password: password, email: email}
+            api.post('user/register', userDto).then((response) => {
+                if(response){
+                    api.post('user/login', userDto).then((response) => {
+                        login(response.data.token);
+                        history.push('/home');
+                        const tokenDecoded = jwt_decoded(response.data.token);
+                        sessionStorage.setItem('userName', tokenDecoded.unique_name);
+                    })
+                }
+            })
+        }
+        else if(props){
+            console.log('erro')
+        }
+        }
 
     return (
         <div>

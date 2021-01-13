@@ -10,7 +10,7 @@ export const logout = () => {
   sessionStorage.removeItem(USERNAME_KEY);
 };
 export const getUserName = () => {
-  sessionStorage.getItem(USERNAME_KEY);
+  return sessionStorage.getItem(USERNAME_KEY);
 }
 export const isLogged = () => {
   if(localStorage.getItem(TOKEN_KEY) == null)

@@ -5,3 +5,8 @@
 th, td{
     text-align: center;
 }
+
+.create{
+    margin-bottom: 10px;
+    float: right;
+}
